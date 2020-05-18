@@ -1,0 +1,23 @@
+# askbeverage intent
+---
+type: intent
+name: askBeverage
+slots:
+  - name: beverage
+    entity: beverage
+utterances:
+  - Je voudrais un [beverage](café)
+  - un [beverage](expresso)
+  - un [beverage](thé) s'il vous plait
+  - ce serait pour une [beverage](limonade) s'il te plait
+
+# beverage entity
+---
+type: entity
+name: beverage
+automatically_extensible: no
+values:
+- café
+- [thé, thé noir, thé vert, thé blanc]
+- [crème]
+- [limonade]
