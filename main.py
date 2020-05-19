@@ -4,6 +4,7 @@ import os
 from vosk import Model, KaldiRecognizer
 import pyaudio
 
+from hotword import Hotword
 from nlu import Nlu
 from tts import Tts
 
@@ -11,8 +12,8 @@ if not os.path.exists("model"):
     print ("Please download the model from https://github.com/alphacep/vosk-api/blob/master/doc/models.md and unpack as 'model' in the current folder.")
     exit (1)
 
-STATE_WAKE = False
-WAKE = "jeannette"
+##HOTWORD
+hotword=Hotword("jeannette")
 
 ##TEXT TO SPEECH
 tts = Tts()
@@ -37,11 +38,11 @@ while True:
         break
     if rec.AcceptWaveform(data):
         print(rec.Result())
-        if rec.Result().count(WAKE) > 0:
+        if rec.Result().count(hotword.getWord()) > 0:
             tts.speak("Que puis-je faire pour toi?")
-            STATE_WAKE = True
-        if STATE_WAKE == True:
+            hotword.setState(True)
+        if hotword.getState() == True:
             parsing = nlu.parse(rec.Result())
             if parsing["intent"]["intentName"]=="askBeverage":
                 tts.speak("je te prépare ta"+parsing["slots"][0]["rawValue"])
-                STATE_WAKE = False
+                hotword.setState(False)
