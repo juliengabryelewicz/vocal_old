@@ -1,0 +1,4 @@
+[Plugin]
+Name = boisson
+Version = 1.0.0
+Description = Demande de boisson

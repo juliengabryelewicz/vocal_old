@@ -1,0 +1,1 @@
+from .boisson import BoissonPlugin
