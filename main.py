@@ -16,6 +16,7 @@ if not os.path.exists("model"):
     exit (1)
 
 configuration=Configuration("config/config.yaml")
+configuration.generate_nlu_file()
 
 ##HOTWORD
 hotword=Hotword(configuration.config_list["hotword"])
