@@ -5,6 +5,7 @@ import pkg_resources
 import pyaudio
 from vosk import Model, KaldiRecognizer
 
+from configuration import Configuration
 from hotword import Hotword
 from nlu import Nlu
 from tts import Tts
@@ -14,12 +15,14 @@ if not os.path.exists("model"):
     print ("Please download the model from https://github.com/alphacep/vosk-api/blob/master/doc/models.md and unpack as 'model' in the current folder.")
     exit (1)
 
+configuration=Configuration("config/config.yaml")
+
 ##HOTWORD
-hotword=Hotword("jeannette")
+hotword=Hotword(configuration.config_list["hotword"])
 
 ##TEXT TO SPEECH
 tts = Tts()
-tts.setVoice(3)
+tts.setVoice(configuration.config_list["voice_id"])
 
 ##PYAUDIO
 p = pyaudio.PyAudio()
@@ -32,7 +35,7 @@ rec = KaldiRecognizer(model, 16000)
 
 
 ###SNIPS
-nlu = Nlu("nlu/test_dataset.json")
+nlu = Nlu("nlu/"+configuration.config_list["language"]+"/dataset.json")
 
 # Load plugins
 plugin_directories = [
@@ -49,7 +52,7 @@ while True:
     if rec.AcceptWaveform(data):
         print(rec.Result())
         if rec.Result().count(hotword.getWord()) > 0:
-            tts.speak("Que puis-je faire pour toi?")
+            tts.speak(configuration.config_list["sentence_welcome"])
             hotword.setState(True)
         if hotword.getState() == True:
             parsing = nlu.parse(rec.Result())
