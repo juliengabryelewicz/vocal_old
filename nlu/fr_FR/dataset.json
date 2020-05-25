@@ -26,9 +26,80 @@
       ],
       "matching_strictness": 1.0,
       "use_synonyms": true
-    }
+    },
+    "person": {
+      "automatically_extensible": true,
+      "data": [
+        {
+          "synonyms": [],
+          "value": "Julien"
+        },
+        {
+          "synonyms": [],
+          "value": "Ang\u00e8le"
+        },
+        {
+          "synonyms": [],
+          "value": "Clara"
+        },
+        {
+          "synonyms": [],
+          "value": "G\u00e9raldine"
+        }
+      ],
+      "matching_strictness": 1.0,
+      "use_synonyms": true
+    },
+    "snips/date": {}
   },
   "intents": {
+    "addbirthday": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "Ajoute dans ma liste d'anniversaire "
+            },
+            {
+              "entity": "person",
+              "slot_name": "person",
+              "text": "Ang\u00e9le"
+            },
+            {
+              "text": " le "
+            },
+            {
+              "entity": "snips/date",
+              "slot_name": "dateBirthday",
+              "text": "14 mai"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "Ajoute "
+            },
+            {
+              "entity": "person",
+              "slot_name": "person",
+              "text": "Julien"
+            },
+            {
+              "text": " le "
+            },
+            {
+              "entity": "snips/date",
+              "slot_name": "dateBirthday",
+              "text": "4 octobre"
+            },
+            {
+              "text": " dans ma liste d'anniversaire"
+            }
+          ]
+        }
+      ]
+    },
     "askBeverage": {
       "utterances": [
         {
@@ -82,6 +153,80 @@
             },
             {
               "text": " s'il te plait"
+            }
+          ]
+        }
+      ]
+    },
+    "listbirthday": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "donne ma liste d'anniversaire s'il te plait"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "quelle est ma liste d'anniversiare"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "quelles sont les personnes dans ma liste d'anniversaire"
+            }
+          ]
+        }
+      ]
+    },
+    "removebirthday": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "Enl\u00e8ve "
+            },
+            {
+              "entity": "person",
+              "slot_name": "person",
+              "text": "Ang\u00e9le"
+            },
+            {
+              "text": " de ma liste d'anniversaire"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "Retire "
+            },
+            {
+              "entity": "person",
+              "slot_name": "person",
+              "text": "Ang\u00e9le"
+            },
+            {
+              "text": " de ma liste d'anniversaire"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "Peux-tu enlever "
+            },
+            {
+              "entity": "person",
+              "slot_name": "person",
+              "text": "Clara"
+            },
+            {
+              "text": " de ma liste d'anniversaire"
             }
           ]
         }

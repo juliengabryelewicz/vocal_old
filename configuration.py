@@ -13,4 +13,4 @@ class Configuration:
 
     def generate_nlu_file(self):
     	nlu_files = glob.glob('plugins/**/nlu/'+self.config_list["language"]+'/*.yaml')
-    	os.system('snips-nlu generate-dataset fr '+self.join_yaml.join(nlu_files)+' > nlu/'+self.config_list["language"]+'/dataset.json')
+    	os.system('snips-nlu generate-dataset '+self.config_list["language"][:2]+' '+self.join_yaml.join(nlu_files)+' > nlu/'+self.config_list["language"]+'/dataset.json')

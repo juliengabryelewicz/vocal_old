@@ -1,0 +1,46 @@
+# listbirthday intent
+---
+type: intent
+name: listbirthday
+utterances:
+  - donne ma liste d'anniversaire s'il te plait
+  - quelle est ma liste d'anniversiare
+  - quelles sont les personnes dans ma liste d'anniversaire
+
+# addbirthday intent
+---
+type: intent
+name: addbirthday
+slots:
+  - name: person
+    entity: person
+  - name: dateBirthday
+    entity: snips/date
+utterances:
+  - Ajoute dans ma liste d'anniversaire [person](Angéle) le [dateBirthday](14 mai)
+  - Ajoute [person](Julien) le [dateBirthday](4 octobre) dans ma liste d'anniversaire
+
+
+# removebirthday intent
+---
+type: intent
+name: removebirthday
+slots:
+  - name: person
+    entity: person
+utterances:
+  - Enlève [person](Angéle) de ma liste d'anniversaire
+  - Retire [person](Angéle) de ma liste d'anniversaire
+  - Peux-tu enlever [person](Clara) de ma liste d'anniversaire
+
+
+# person entity
+---
+type: entity
+name: person
+automatically_extensible: yes
+values:
+- Julien
+- Angèle
+- Clara
+- Géraldine
