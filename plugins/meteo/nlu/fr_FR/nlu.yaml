@@ -1,0 +1,8 @@
+# listmeteo intent
+---
+type: intent
+name: listmeteo
+utterances:
+  - donne la météo
+  - quelle est la météo d'aujourd'hui?
+  - indique moi la météo

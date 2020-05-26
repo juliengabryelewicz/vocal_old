@@ -183,6 +183,31 @@
         }
       ]
     },
+    "listmeteo": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "donne la m\u00e9t\u00e9o"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "quelle est la m\u00e9t\u00e9o d'aujourd'hui?"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "indique moi la m\u00e9t\u00e9o"
+            }
+          ]
+        }
+      ]
+    },
     "removebirthday": {
       "utterances": [
         {
