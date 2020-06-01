@@ -1,32 +1,5 @@
 {
   "entities": {
-    "beverage": {
-      "automatically_extensible": false,
-      "data": [
-        {
-          "synonyms": [],
-          "value": "caf\u00e9"
-        },
-        {
-          "synonyms": [
-            "th\u00e9 noir",
-            "th\u00e9 vert",
-            "th\u00e9 blanc"
-          ],
-          "value": "th\u00e9"
-        },
-        {
-          "synonyms": [],
-          "value": "cr\u00e8me"
-        },
-        {
-          "synonyms": [],
-          "value": "limonade"
-        }
-      ],
-      "matching_strictness": 1.0,
-      "use_synonyms": true
-    },
     "person": {
       "automatically_extensible": true,
       "data": [
@@ -95,64 +68,6 @@
             },
             {
               "text": " dans ma liste d'anniversaire"
-            }
-          ]
-        }
-      ]
-    },
-    "askBeverage": {
-      "utterances": [
-        {
-          "data": [
-            {
-              "text": "Je voudrais un "
-            },
-            {
-              "entity": "beverage",
-              "slot_name": "beverage",
-              "text": "caf\u00e9"
-            }
-          ]
-        },
-        {
-          "data": [
-            {
-              "text": "un "
-            },
-            {
-              "entity": "beverage",
-              "slot_name": "beverage",
-              "text": "expresso"
-            }
-          ]
-        },
-        {
-          "data": [
-            {
-              "text": "un "
-            },
-            {
-              "entity": "beverage",
-              "slot_name": "beverage",
-              "text": "th\u00e9"
-            },
-            {
-              "text": " s'il vous plait"
-            }
-          ]
-        },
-        {
-          "data": [
-            {
-              "text": "ce serait pour une "
-            },
-            {
-              "entity": "beverage",
-              "slot_name": "beverage",
-              "text": "limonade"
-            },
-            {
-              "text": " s'il te plait"
             }
           ]
         }

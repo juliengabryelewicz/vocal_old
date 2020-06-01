@@ -1,0 +1,3 @@
+import vocal
+
+vocal.main()
