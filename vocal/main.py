@@ -12,11 +12,12 @@ from .tts import Tts
 from .plugin import PluginList
 
 def main():
-    if not os.path.exists("model"):
+    configuration=Configuration("config/config.yaml")
+
+    if not os.path.exists("model/"+configuration.config_list["language"]):
         print ("Please download the model from https://github.com/alphacep/vosk-api/blob/master/doc/models.md and unpack as 'model' in the current folder.")
         exit (1)
 
-    configuration=Configuration("config/config.yaml")
     configuration.generate_nlu_file()
 
     ##HOTWORD
@@ -32,7 +33,7 @@ def main():
     stream.start_stream()
 
     ##VOSK
-    model = Model("model")
+    model = Model("model/"+configuration.config_list["language"])
     rec = KaldiRecognizer(model, 16000)
 
 
