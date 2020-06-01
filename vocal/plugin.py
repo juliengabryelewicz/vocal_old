@@ -1,3 +1,4 @@
+import abc
 import configparser
 import imp
 import inspect
@@ -26,8 +27,7 @@ def parse_info_file(infofile_path):
 
 def get_plugin_class(module_name, plugin_directory):
     mod = imp.load_module(module_name, None, plugin_directory,("py", "r", imp.PKG_DIRECTORY))
-    plugin_classes = inspect.getmembers(mod, lambda cls: inspect.isclass(cls))
-
+    plugin_classes = inspect.getmembers(mod, lambda cls: inspect.isclass(cls) and issubclass(cls, PluginObject))
     if len(plugin_classes) < 1:
         print("Plugin class not found!")
 
@@ -109,3 +109,13 @@ class PluginInfo(object):
     @property
     def description(self):
         return self._get_optional_info('Plugin', 'Description')
+
+class PluginObject:
+    __metaclass__ = abc.ABCMeta
+    @abc.abstractmethod
+    def get_response(self,intent, slots):
+        pass
+
+    @abc.abstractmethod
+    def has_intent(self,intent):
+        pass

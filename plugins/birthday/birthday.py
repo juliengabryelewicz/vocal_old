@@ -1,6 +1,7 @@
 import os
+from vocal import plugin
 
-class BirthdayPlugin:
+class BirthdayPlugin(plugin.PluginObject):
 
     birthday_file="plugins/birthday/list_birthday.txt"
 
@@ -12,7 +13,7 @@ class BirthdayPlugin:
         intent_list=["addbirthday","removebirthday","listbirthday"]
         return any(elem == intent for elem in intent_list)
 
-    def delete_birthday_by_person(self, original_file, condition): 
+    def delete_birthday_by_person(self, original_file, condition):
         bak_file = original_file + '.bak'
         is_skipped = False
         with open(original_file, 'r') as read_file, open(bak_file, 'w') as write_file:
@@ -25,7 +26,7 @@ class BirthdayPlugin:
             os.remove(original_file)
             os.rename(bak_file, original_file)
         else:
-            os.remove(bak_file) 
+            os.remove(bak_file)
 
     def case_removebirthday(self,slots):
         self.delete_birthday_by_person(self.birthday_file, lambda x : slots[0]["rawValue"] in x )

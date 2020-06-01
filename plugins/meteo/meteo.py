@@ -1,7 +1,8 @@
 import requests
 import sys
+from vocal import plugin
 
-class MeteoPlugin:
+class MeteoPlugin(plugin.PluginObject):
 
     meteo_file="plugins/meteo/list_meteo.txt"
     api_key=""

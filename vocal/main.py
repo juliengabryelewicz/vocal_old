@@ -48,8 +48,6 @@ def main():
     plugins_list=PluginList(plugin_directories)
     plugins_list.find_plugins()
 
-    #print(plugins_list._plugins)
-
     while True:
         data = stream.read(8000, exception_on_overflow = False)
         if len(data) == 0:
@@ -61,7 +59,6 @@ def main():
                 hotword.setState(True)
             if hotword.getState() == True:
                 parsing = nlu.parse(rec.Result())
-                #print(parsing)
                 for plugin in plugins_list._plugins:
                     plugin_object = plugins_list._plugins[plugin].plugin_class
                     if plugin_object.has_intent(parsing["intent"]["intentName"]) == True:
