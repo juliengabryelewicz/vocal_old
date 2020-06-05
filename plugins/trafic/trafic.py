@@ -23,6 +23,15 @@ class TraficPlugin(plugin.PluginObject):
         cleantext = re.sub(cleanr, '', raw_html)
         return cleantext
 
+    def get_all_bouchons(self,departement):
+        text_bouchon = ""
+        for bouchon in departement.find_next_siblings():
+            if bouchon.name == 'div':
+                text_bouchon+=bouchon.text
+            elif bouchon.name == 'hr':
+                break
+        return text_bouchon
+
     def case_listbouchons(self, slots):
         with open("plugins/trafic/config.yaml") as file:
             config_list = yaml.load(file, Loader=yaml.FullLoader)
@@ -35,7 +44,7 @@ class TraficPlugin(plugin.PluginObject):
         for departement in departement_table_data:
             departement_check = departement.find("a", attrs={"name": config_list["departements"].split(",")})
             if departement_check is not None:
-                departement_found+= str(departement.find_next_sibling("div"))
+                departement_found+= self.get_all_bouchons(departement)
         if departement_found == "":
             return "aucun bouchon à signaler"
         else:
