@@ -98,6 +98,24 @@
         }
       ]
     },
+    "listbouchons": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "donne moi le trafic"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "Y-a-t-il des bouchons?"
+            }
+          ]
+        }
+      ]
+    },
     "listmeteo": {
       "utterances": [
         {
