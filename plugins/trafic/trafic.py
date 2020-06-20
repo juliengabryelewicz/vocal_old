@@ -37,12 +37,12 @@ class TraficPlugin(plugin.PluginObject):
             config_list = yaml.load(file, Loader=yaml.FullLoader)
 
         response=""
-        html_content = requests.get(self.url_bouchons).text
+        html_content = requests.get(self.url_bouchons).content.decode('utf8')
         soup = BeautifulSoup(html_content, "lxml")
         departement_table_data = soup.find_all("span", attrs={"class": "rupture"})
         departement_found=""
         for departement in departement_table_data:
-            departement_check = departement.find("a", attrs={"name": config_list["departements"].split(",")})
+            departement_check = departement.find("a", attrs={"name": str(config_list["departements"]).split(",")})
             if departement_check is not None:
                 departement_found+= self.get_all_bouchons(departement)
         if departement_found == "":
