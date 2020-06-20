@@ -12,9 +12,12 @@ class SearchPlugin(plugin.PluginObject):
         return any(elem == intent for elem in intent_list)
 
     def case_askdefinition(self, slots):
-        wikipedia.set_lang("fr")
-        search = wikipedia.search(slots[0]["rawValue"])
-        if(len(search) > 0):
-            return wikipedia.summary(search[0], sentences=2)
+        if(len(slots) > 0):
+            wikipedia.set_lang("fr")
+            search = wikipedia.search(slots[0]["rawValue"])
+            if(len(search) > 0):
+                return wikipedia.summary(search[0], sentences=2)
+            else:
+                return "je n'ai malheureusement rien trouvé à ce sujet"
         else:
-            return "je n'ai malheureusement rien trouvé à ce sujet"
+            return "je n'ai pas bien compris ta phrase, peux-tu répéter?"    

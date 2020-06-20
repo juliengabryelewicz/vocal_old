@@ -62,9 +62,14 @@ def main():
                 result = re.findall(r'(?<=text")(?:\s*\:\s*)(".{0,23}?(?=")")', rec.Result(), re.IGNORECASE+re.DOTALL)
                 if len(result) > 0:
                     parsing = nlu.parse(result[0])
-                    for plugin in plugins_list._plugins:
-                        plugin_object = plugins_list._plugins[plugin].plugin_class
-                        if plugin_object.has_intent(parsing["intent"]["intentName"]) == True:
-                            response = plugin_object.get_response(parsing["intent"]["intentName"],parsing["slots"])
-                            tts.speak(response)
-                            hotword.setState(False)
+                    if parsing["intent"]["probability"] >= configuration.config_list["min_probability"]:
+                        for plugin in plugins_list._plugins:
+                            plugin_object = plugins_list._plugins[plugin].plugin_class
+                            if plugin_object.has_intent(parsing["intent"]["intentName"]) == True:
+                                response = plugin_object.get_response(parsing["intent"]["intentName"],parsing["slots"])
+                                tts.speak(response)
+                                hotword.setState(False)
+                    elif parsing["intent"]["intentName"] == None:
+                        hotword.setState(True)
+                    else:
+                        tts.speak("je ne suis pas sur d'avoir compris, peux-tu répéter?")
