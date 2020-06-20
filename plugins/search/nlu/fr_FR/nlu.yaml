@@ -1,0 +1,26 @@
+# askdefiniton intent
+---
+type: intent
+name: askdefinition
+slots:
+  - name: searchword
+    entity: searchword
+utterances:
+  - que signifie [searchword](zinzolin) ?
+  - Qui est [searchword](barack obama) ?
+  - que peux-tu me dire sur [searchword](paris) ?
+  - fais une recherche sur [searchword](bleu) ?
+  - qu'est-ce qu'un [searchword](lampadaire) ?
+  - qu'est-ce que la [searchword](bible) ?
+# person entity
+---
+type: entity
+name: searchword
+automatically_extensible: yes
+values:
+- bleu
+- zinzolin
+- lampadaire
+- Barack Obama
+- Paris
+- bible

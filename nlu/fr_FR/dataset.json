@@ -23,6 +23,37 @@
       "matching_strictness": 1.0,
       "use_synonyms": true
     },
+    "searchword": {
+      "automatically_extensible": true,
+      "data": [
+        {
+          "synonyms": [],
+          "value": "bleu"
+        },
+        {
+          "synonyms": [],
+          "value": "zinzolin"
+        },
+        {
+          "synonyms": [],
+          "value": "lampadaire"
+        },
+        {
+          "synonyms": [],
+          "value": "Barack Obama"
+        },
+        {
+          "synonyms": [],
+          "value": "Paris"
+        },
+        {
+          "synonyms": [],
+          "value": "bible"
+        }
+      ],
+      "matching_strictness": 1.0,
+      "use_synonyms": true
+    },
     "snips/date": {}
   },
   "intents": {
@@ -68,6 +99,100 @@
             },
             {
               "text": " dans ma liste d'anniversaire"
+            }
+          ]
+        }
+      ]
+    },
+    "askdefinition": {
+      "utterances": [
+        {
+          "data": [
+            {
+              "text": "que signifie "
+            },
+            {
+              "entity": "searchword",
+              "slot_name": "searchword",
+              "text": "zinzolin"
+            },
+            {
+              "text": " ?"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "Qui est "
+            },
+            {
+              "entity": "searchword",
+              "slot_name": "searchword",
+              "text": "barack obama"
+            },
+            {
+              "text": " ?"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "que peux-tu me dire sur "
+            },
+            {
+              "entity": "searchword",
+              "slot_name": "searchword",
+              "text": "paris"
+            },
+            {
+              "text": " ?"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "fais une recherche sur "
+            },
+            {
+              "entity": "searchword",
+              "slot_name": "searchword",
+              "text": "bleu"
+            },
+            {
+              "text": " ?"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "qu'est-ce qu'un "
+            },
+            {
+              "entity": "searchword",
+              "slot_name": "searchword",
+              "text": "lampadaire"
+            },
+            {
+              "text": " ?"
+            }
+          ]
+        },
+        {
+          "data": [
+            {
+              "text": "qu'est-ce que la "
+            },
+            {
+              "entity": "searchword",
+              "slot_name": "searchword",
+              "text": "bible"
+            },
+            {
+              "text": " ?"
             }
           ]
         }

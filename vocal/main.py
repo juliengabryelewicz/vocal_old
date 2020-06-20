@@ -3,6 +3,7 @@ import os.path
 import os
 import pkg_resources
 import pyaudio
+import re
 from vosk import Model, KaldiRecognizer
 
 from .configuration import Configuration
@@ -58,10 +59,12 @@ def main():
                 tts.speak(configuration.config_list["sentence_welcome"])
                 hotword.setState(True)
             if hotword.getState() == True:
-                parsing = nlu.parse(rec.Result())
-                for plugin in plugins_list._plugins:
-                    plugin_object = plugins_list._plugins[plugin].plugin_class
-                    if plugin_object.has_intent(parsing["intent"]["intentName"]) == True:
-                        response = plugin_object.get_response(parsing["intent"]["intentName"],parsing["slots"])
-                        tts.speak(response)
-                        hotword.setState(False)
+                result = re.findall(r'(?<=text")(?:\s*\:\s*)(".{0,23}?(?=")")', rec.Result(), re.IGNORECASE+re.DOTALL)
+                if len(result) > 0:
+                    parsing = nlu.parse(result[0])
+                    for plugin in plugins_list._plugins:
+                        plugin_object = plugins_list._plugins[plugin].plugin_class
+                        if plugin_object.has_intent(parsing["intent"]["intentName"]) == True:
+                            response = plugin_object.get_response(parsing["intent"]["intentName"],parsing["slots"])
+                            tts.speak(response)
+                            hotword.setState(False)
