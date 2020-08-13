@@ -56,7 +56,6 @@ def main():
             break
         if rec.AcceptWaveform(data):
             rec_result = json.loads(rec.Result())
-            tts.speak(configuration.config_list["sentence_welcome"])
             if rec_result["text"].count(hotword.getWord()) > 0:
                 tts.speak(configuration.config_list["sentence_welcome"])
                 hotword.setState(True)
