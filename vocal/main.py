@@ -1,4 +1,5 @@
 from __future__ import print_function
+import json
 import os.path
 import os
 import pkg_resources
@@ -54,14 +55,14 @@ def main():
         if len(data) == 0:
             break
         if rec.AcceptWaveform(data):
-            print(rec.Result())
-            if rec.Result().count(hotword.getWord()) > 0:
+            rec_result = json.loads(rec.Result())
+            tts.speak(configuration.config_list["sentence_welcome"])
+            if rec_result["text"].count(hotword.getWord()) > 0:
                 tts.speak(configuration.config_list["sentence_welcome"])
                 hotword.setState(True)
             if hotword.getState() == True:
-                result = re.findall(r'(?<=text")(?:\s*\:\s*)(".{0,23}?(?=")")', rec.Result(), re.IGNORECASE+re.DOTALL)
-                if len(result) > 0:
-                    parsing = nlu.parse(result[0])
+                if rec_result["text"] != "":
+                    parsing = nlu.parse(rec_result["text"])
                     if parsing["intent"]["probability"] >= configuration.config_list["min_probability"]:
                         for plugin in plugins_list._plugins:
                             plugin_object = plugins_list._plugins[plugin].plugin_class

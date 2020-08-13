@@ -1,0 +1,8 @@
+requests==2.22.0
+beautifulsoup4==4.9.1
+pyaudio==0.2.11
+pyttsx3==2.90
+PyYAML==5.3.1
+snips_nlu==0.20.2
+vosk==0.3.10
+wikipedia==1.4.0
