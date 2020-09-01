@@ -1,0 +1,19 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+requests = "==2.22.0"
+beautifulsoup4 = "==4.9.1"
+pyttsx3 = "==2.90"
+snips-nlu = "==0.20.2"
+vosk = "==0.3.10"
+wikipedia = "==1.4.0"
+PyAudio = "==0.2.11"
+PyYAML = "==5.3.1"
+
+[requires]
+python_version = "3.8"
